@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = "crm.User"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 MIDDLEWARE = [
