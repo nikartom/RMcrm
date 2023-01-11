@@ -52,8 +52,10 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'bootstrap5',
+    'iommi',
 
     'accounts',
+    'crm',
 ]
 
 AUTH_USER_MODEL = "accounts.User"
@@ -62,6 +64,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 MIDDLEWARE = [
+    'iommi.live_edit.Middleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,6 +72,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'iommi.sql_trace.Middleware',
+    'iommi.profiling.Middleware',
+    'iommi.middleware',
+
 ]
 
 ROOT_URLCONF = 'config.urls'

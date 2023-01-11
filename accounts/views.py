@@ -15,11 +15,6 @@ from django.utils.encoding import force_bytes
 
 from .forms import UserRegistrationForm
 
-def homepage(request):
-    	return render(request=request, template_name='index.html')
-
-
-
 def register_request(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
@@ -42,7 +37,7 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"Вы вошли как {username}.")
-				return redirect("accounts:homepage")
+				return redirect("crm:homepage")
 			else:
 				messages.error(request,"Неверное имя пользователя или пароль!")
 		else:
@@ -53,7 +48,7 @@ def login_request(request):
 def logout_request(request):
 	logout(request)
 	messages.info(request, "Вы успешно вышли") 
-	return redirect("accounts:homepage")
+	return redirect("crm:homepage")
 
 def password_reset_request(request):
 	if request.method == "POST":
