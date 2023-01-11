@@ -15,6 +15,11 @@ from django.utils.encoding import force_bytes
 
 from .forms import UserRegistrationForm
 
+def homepage(request):
+    	return render(request=request, template_name='accounts/home.html')
+
+
+
 def register_request(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
@@ -22,10 +27,10 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Регистрация прошла успешно!" )
-            return redirect("crm:homepage")
+            return redirect("accounts:homepage")
         messages.error(request, "Регистрация не удалась. Проверьти правильность заполнения формы")
     form = UserRegistrationForm()
-    return render (request=request, template_name="crm/register.html", context={"register_form":form})
+    return render (request=request, template_name="accounts/register.html", context={"register_form":form})
 
 def login_request(request):
 	if request.method == "POST":
@@ -37,18 +42,18 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"Вы вошли как {username}.")
-				return redirect("crm:homepage")
+				return redirect("accounts:homepage")
 			else:
 				messages.error(request,"Неверное имя пользователя или пароль!")
 		else:
 			messages.error(request,"Неверное имя пользователя или пароль!")
 	form = AuthenticationForm()
-	return render(request=request, template_name="crm/login.html", context={"login_form":form})
+	return render(request=request, template_name="accounts/login.html", context={"login_form":form})
 
 def logout_request(request):
 	logout(request)
 	messages.info(request, "Вы успешно вышли") 
-	return redirect("crm:homepage")
+	return redirect("accounts:homepage")
 
 def password_reset_request(request):
 	if request.method == "POST":
@@ -60,7 +65,7 @@ def password_reset_request(request):
 			if associated_users.exists():
 				for user in associated_users:
 					subject = "Запрос на сброс пароля"
-					email_template_name = "crm/password/password_reset_email.txt"
+					email_template_name = "accounts/password/password_reset_email.txt"
 					c = {
 					"email":user.email,
 					'domain':'127.0.0.1:8000',
@@ -77,4 +82,4 @@ def password_reset_request(request):
 						return HttpResponse('Invalid header found.')
 					return redirect ("/password_reset/done/")
 	password_reset_form = PasswordResetForm()
-	return render(request=request, template_name="crm/password/password_reset.html", context={"password_reset_form":password_reset_form})
+	return render(request=request, template_name="accounts/password/password_reset.html", context={"password_reset_form":password_reset_form})

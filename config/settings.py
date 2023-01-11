@@ -53,10 +53,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrap5',
 
-    'crm',
+    'accounts',
 ]
 
-AUTH_USER_MODEL = "crm.User"
+AUTH_USER_MODEL = "accounts.User"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
