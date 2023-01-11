@@ -16,7 +16,7 @@ from django.utils.encoding import force_bytes
 from .forms import UserRegistrationForm
 
 def homepage(request):
-    	return render(request=request, template_name='accounts/home.html')
+    	return render(request=request, template_name='index.html')
 
 
 
