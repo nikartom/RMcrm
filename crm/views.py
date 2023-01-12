@@ -10,7 +10,7 @@ def homepage(request):
 class TableAll(Table):
 	class Meta:
 		model = Project
-		attrs = {'class': 'table table-striped table-bordered'}
+		attrs = {'class': 'table table-striped table-bordered', 'id':'TableToExport'}
 
 def table(request):
 	table = TableAll(Project.objects.all())

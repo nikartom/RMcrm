@@ -18,13 +18,15 @@
         font-size: 10px;
       }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
     <title>Title</title>
+    
   </head>
   <body>
     {% block content %}
 
     {% endblock %} 
-    <script src="https://code.jquery.com/jquery-3.6.3.slim.js" integrity="sha256-DKU1CmJ8kBuEwumaLuh9Tl/6ZB6jzGOBV/5YpNE2BWc=" crossorigin="anonymous"></script>
     {% if messages %}
       <script>
         var info_messages = document.getElementsByClassName('alert-info');
@@ -34,7 +36,15 @@
                 info_messages[i].setAttribute('style', 'display:none !important');
             }
         }, 3000);
-      </script>
+      </script>      
     {% endif %}
+    <script>
+      document.getElementById("sheetjsexport").addEventListener('click', function() {
+        /* Create worksheet from HTML DOM TABLE */
+        var wb = XLSX.utils.table_to_book(document.getElementById("TableToExport"));
+        /* Export to file (start a download) */
+        XLSX.writeFile(wb, "SheetJSTable.xlsx");
+      });
+      </script>
   </body>
 </html>
