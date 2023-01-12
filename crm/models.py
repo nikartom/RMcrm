@@ -18,7 +18,7 @@ class Address(models.Model):
     numb = models.CharField(max_length=64, verbose_name='Номер дома')
 
     def __str__(self):
-        return self.street
+        return f'{self.street}, {self.numb}'
 
 
 
