@@ -50,8 +50,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # https://django-crispy-forms.readthedocs.io/en/latest/index.html
     'crispy_forms',
+
+    # https://django-bootstrap-v5.readthedocs.io/en/latest/index.html
     'bootstrap5',
+
+    # https://django-tables2.readthedocs.io/en/latest/
     'django_tables2',
 
     'accounts',
@@ -64,7 +69,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 MIDDLEWARE = [
-    'iommi.live_edit.Middleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,9 +76,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'iommi.sql_trace.Middleware',
-    'iommi.profiling.Middleware',
-    'iommi.middleware',
 
 ]
 
