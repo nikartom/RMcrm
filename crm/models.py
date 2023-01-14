@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from accounts.items import REGIONS
 from accounts.models import User
 
@@ -25,6 +26,7 @@ class Address(models.Model):
 class Project(models.Model):
     manager = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Сотрудник")
     address = models.ForeignKey(Address, on_delete=models.PROTECT, verbose_name="Адрес")
+    file = models.URLField()
     sq = models.FloatField(verbose_name="Площадь")
     rent_tax = models.PositiveIntegerField(verbose_name="Арендная ставка")
     act_reg = models.BooleanField(default=False, verbose_name="Регистрация с актом/без")
@@ -40,6 +42,7 @@ class Project(models.Model):
     comment = models.TextField(verbose_name="Комментарий", blank=True)
     vis_bool = models.BooleanField(default=False, verbose_name="Подписан")
     approve = models.BooleanField(default=False, verbose_name="Принят")
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.address)
