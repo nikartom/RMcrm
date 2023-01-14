@@ -66,7 +66,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = "accounts.User"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+ALLOWED_HOSTS = ['*']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
