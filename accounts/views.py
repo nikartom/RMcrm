@@ -22,7 +22,7 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Регистрация прошла успешно!" )
-            return redirect("accounts:homepage")
+            return redirect("crm:homepage")
         messages.error(request, "Регистрация не удалась. Проверьти правильность заполнения формы")
     form = UserRegistrationForm()
     return render (request=request, template_name="accounts/register.html", context={"register_form":form})

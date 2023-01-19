@@ -2,7 +2,7 @@
     <div class="position-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
+          <a class="nav-link active" aria-current="page" href="{% url 'crm:homepage' %}">
             <span data-feather="/"></span>
             Панель управления
           </a>
@@ -11,6 +11,12 @@
           <a class="nav-link" href="{% url 'crm:table' %}">
             <span data-feather="table"></span>
             Общая таблица
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'crm:add_project' %}">
+            <span data-feather="table"></span>
+            Добавить проект
           </a>
         </li>
 
