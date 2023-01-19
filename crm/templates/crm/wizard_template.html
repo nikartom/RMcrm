@@ -1,0 +1,24 @@
+{% extends "auth_base.html" %} 
+{% block head %}
+    {{ block.super }}
+    {{ wizard.form.media }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <p class="text-info">Создание проекта, шаг {{ wizard.steps.step1 }} из {{ wizard.steps.count }}</p>
+    <h3>{% block title_wizard %}{% endblock %}</h3>
+    <form class="well form-horizontal" action="." method="POST">{% csrf_token  %}
+        {{ wizard.management_form }}
+        <div class="control-group">
+          {% block form_wizard %}
+
+          {% endblock %}
+        </div>
+        <div class="form-actions" style="padding-left: 50%">
+            {% block button_wizard %}
+
+            {% endblock %}
+        </div>
+    </form>
+</div>
+{% endblock %}

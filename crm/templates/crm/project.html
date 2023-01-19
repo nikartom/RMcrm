@@ -1,0 +1,14 @@
+{% extends "crm/wizard_template.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title_wizard %}
+    Добавление проекта
+{% endblock %}
+{% block form_wizard %}
+{{ form|crispy }}
+{% endblock %}
+{% block button_wizard %}
+    <button type="submit" class="btn btn-primary">
+        <i class="icon-user icon-white"></i> Далее <i class="icon-arrow-right icon-white"></i>
+    </button>
+{% endblock %}

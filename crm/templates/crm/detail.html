@@ -1,0 +1,14 @@
+{% extends "crm/wizard_template.html" %}
+{% load crispy_forms_tags %}
+{% block title_wizard %}
+    Дополнительная информация
+{% endblock %}
+{% block form_wizard %}
+    {{ form|crispy }}
+{% endblock %}
+{% block button_wizard %}
+    <button name="wizard_goto_step" class="btn btn-primary mt-2" type="submit" value="{{ wizard.steps.prev }}">
+        <i class="icon-user icon-white"></i> В начало <i class="icon-arrow-left icon-white"></i>
+    </button>
+    <input type="submit" class="btn btn-primary mt-2" value="Сохранить"/>
+{% endblock %}

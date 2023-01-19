@@ -59,6 +59,9 @@ INSTALLED_APPS = [
     # https://django-tables2.readthedocs.io/en/latest/
     'django_tables2',
 
+    # https://django-formtools.readthedocs.io/en/latest/wizard.html
+    'formtools',
+
     'accounts',
     'crm',
 ]
@@ -67,6 +70,7 @@ AUTH_USER_MODEL = "accounts.User"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://bdbb-92-62-120-21.eu.ngrok.io', 'https://*.127.0.0.1']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,6 +156,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"), 
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
