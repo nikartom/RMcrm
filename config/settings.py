@@ -62,6 +62,9 @@ INSTALLED_APPS = [
     # https://django-formtools.readthedocs.io/en/latest/wizard.html
     'formtools',
 
+    # https://django-filter.readthedocs.io/en/main/guide/usage.html
+    'django_filters',
+
     'accounts',
     'crm',
 ]
@@ -70,7 +73,7 @@ AUTH_USER_MODEL = "accounts.User"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://bdbb-92-62-120-21.eu.ngrok.io', 'https://*.127.0.0.1']
+# CSRF_TRUSTED_ORIGINS = ['https://*.f272-62-33-61-228.eu.ngrok.io/', 'https://*.127.0.0.1']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

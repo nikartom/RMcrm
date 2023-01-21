@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+{% for project in object_list %}
+    {% if project.approve is True %}
+    <div class="col-sm-2">
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{ project.manager.first_name }} {{ project.manager.last_name }}</div>
+            <div class="card-body text-success">
+                <h5 class="card-title">{{ project.address }}</h5>
+                <p class="card-text">Площадь: {{ project.sq }}</p>
+                <p class="card-text">Арендная ставка: {{ project.rent_tax }}</p>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-2">
+        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{ project.manager.first_name }} {{ project.manager.last_name }}</div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">{{ project.address }}</h5>
+                <p class="card-text">Площадь: {{ project.sq }}</p>
+                <p class="card-text">Арендная ставка: {{ project.rent_tax }}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
+</div>
+{% endblock %}
