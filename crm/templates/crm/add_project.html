@@ -27,13 +27,13 @@
         </div>
     </div>
     <div class="row">
-      <div class="form-group col-md-6 mb-0">
+      <div class="form-group col-md-3 mb-0">
         {{ form_project.sq|as_crispy_field }}
       </div>
-      <div class="form-group col-md-6 mb-0">
+      <div class="form-group col-md-3 mb-0">
         {{ form_project.rent_tax|as_crispy_field }}
       </div>
-      <div class="form-group col-md-6 mb-0">
+      <div class="form-group col-md-3 mb-0">
         {{ form_detail.sq_price|as_crispy_field }}
       </div>
     </div>
@@ -127,5 +127,16 @@
     <button class="btn btn-primary mt-4" type="submit">Добавить</button>
   </form>
 </div>
+
+<script>
+  $(function(){
+    $("#id_sq_price").prop("readonly", true); 
+    $('#id_rent_tax, #id_sq').keyup(function(){
+       var value1 = parseFloat($('#id_rent_tax').val()) || 0;
+       var value2 = parseFloat($('#id_sq').val()) || 0;
+       $('#id_sq_price').val((value1 / value2).toFixed(2));
+    });
+ });
+</script>
 
 {% endblock %}

@@ -1,7 +1,6 @@
 from django import forms
-from django.forms import modelformset_factory
-from django.forms.models import BaseInlineFormSet, inlineformset_factory
-
+from crispy_forms.layout import Layout, Field, BaseInput
+from crispy_forms.helper import FormHelper
 from .models import *
 
 
@@ -13,7 +12,7 @@ class AddressForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         city = kwargs.pop("city", "")
         super(AddressForm, self).__init__(*args, **kwargs)
-        self.fields["city"] = forms.ModelChoiceField(queryset=City.objects.all())
+        self.fields["city"] = forms.ModelChoiceField(queryset=City.objects.all(), label='Город')
 
 
 class ProjectForm(forms.ModelForm):
@@ -21,7 +20,10 @@ class ProjectForm(forms.ModelForm):
         model = Project
         fields = ["file", "sq", "rent_tax"]
 
+
 class ProjectDetailForm(forms.ModelForm):
     class Meta:
         model = ProjectDetail
         exclude = ['project', 'comment', 'resume', 'complite', 'created_at']
+
+        

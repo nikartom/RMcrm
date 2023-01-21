@@ -37,9 +37,9 @@ def add_project(request):
         if form_address.is_valid() and form_project.is_valid() and form_detail.is_valid():
             address_clean = form_address.cleaned_data
             project_clean = form_project.cleaned_data
-            detail_clean = form_detail .cleaned_data
+            detail_clean = form_detail.cleaned_data
             a = Address.objects.update_or_create(**address_clean)
-            p = Project.objects.create(
+            p = Project.objects.update_or_create(
                 address = a[0],
                 manager = request.user,
                 file = project_clean['file'],
@@ -47,8 +47,7 @@ def add_project(request):
                 rent_tax = project_clean['rent_tax']
             )
             ProjectDetail.objects.create(
-                project = p,
-                sq_price = detail_clean['sq_price'] ,
+                project = p[0],
                 **detail_clean
             )
             # return HttpResponseRedirect(reverse('crm:homepage'))
